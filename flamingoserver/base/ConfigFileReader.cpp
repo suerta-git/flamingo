@@ -59,7 +59,7 @@ void CConfigFileReader::loadFile(const char* filename)
 	for (;;)
 	{
 		char* p = fgets(buf, 256, fp);
-		if (!p)
+		if (!p)  //如果没有读到
 			break;
 
 		size_t len = strlen(buf);
@@ -73,7 +73,7 @@ void CConfigFileReader::loadFile(const char* filename)
 		if (strlen(buf) == 0)
 			continue;
 
-		parseLine(buf);
+		parseLine(buf);  //解析行
 	}
 
 	fclose(fp);

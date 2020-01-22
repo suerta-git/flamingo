@@ -1,10 +1,11 @@
 #pragma once
 
+//单例模式
 template<typename T>
 class Singleton
 {
 public:
-	static T& Instance()
+	static T& Instance() //获取唯一实例
 	{
 		//pthread_once(&ponce_, &Singleton::init);
 		if (nullptr == value_)
@@ -20,6 +21,7 @@ private:
 
 	Singleton(const Singleton&) = delete;
 	Singleton& operator=(const Singleton&) = delete;
+	//禁止复制与赋值
 
 	static void init()
 	{

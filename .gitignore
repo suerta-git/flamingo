@@ -46,3 +46,14 @@ flamingoclient/Bin/Logs/
 *.user
 *.dep
 *.map
+/flamingoclient/.vs/FlamingoClient/v16/Browse.VC.db
+*.db
+/flamingoserver/.vs/FlamingoServer/v16/Browse.VC.opendb
+/flamingoserver/.vs/FlamingoServer/v16/Solution.VC.db-shm
+/flamingoserver/.vs/FlamingoServer/v16/Solution.VC.db-wal
+/flamingoserver/windowsproj/chatserver/Debug/chatserver.vcxproj.FileListAbsolute.txt
+/flamingoserver/windowsproj/fileserver/Debug/fileserver.vcxproj.FileListAbsolute.txt
+/flamingoserver/windowsproj/imgserver/Debug/imgserver.vcxproj.FileListAbsolute.txt
+/flamingoserver/windowsproj/x64/Debug/chatserver.vcxproj.FileListAbsolute.txt
+/flamingoserver/windowsproj/x64/Debug/fileserver.vcxproj.FileListAbsolute.txt
+/flamingoserver/windowsproj/x64/Debug/imgserver.vcxproj.FileListAbsolute.txt

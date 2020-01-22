@@ -5,17 +5,17 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "../base/Platform.h"
-#include "../base/Singleton.h"
+#include "../base/Platform.h" //平台
+#include "../base/Singleton.h"  //设计模式：单例
 #include "../base/ConfigFileReader.h"
-#include "../base/AsyncLog.h"
+#include "../base/AsyncLog.h"  //异步log
 #include "../net/EventLoop.h"
 #include "../net/EventLoopThreadPool.h"
 #include "../mysqlmgr/MysqlManager.h"
 
-#ifndef WIN32
+#ifndef WIN32 //linux环境
 #include <string.h>
-#include "../utils/DaemonRun.h"
+#include "../utils/DaemonRun.h" //工具类：守护进程运行
 #endif 
 
 #include "UserManager.h"
@@ -27,17 +27,18 @@ using namespace net;
 
 #ifdef WIN32
 //初始化Windows socket库
-NetworkInitializer windowsNetworkInitializer;
+NetworkInitializer windowsNetworkInitializer; //建立对象
 #endif
 
 EventLoop g_mainLoop;
 
-#ifndef WIN32
-void prog_exit(int signo)
+#ifndef WIN32 //linux环境下
+void prog_exit(int signo) //定义退出函数
 {
     std::cout << "program recv signal [" << signo << "] to exit." << std::endl;
 
     Singleton<MonitorServer>::Instance().uninit();
+        //Instance()获取MonitorServer类型的单例，并执行其uninit()
     Singleton<HttpServer>::Instance().uninit();
     Singleton<ChatServer>::Instance().uninit();
     g_mainLoop.quit();
@@ -48,7 +49,7 @@ void prog_exit(int signo)
 
 int main(int argc, char* argv[])
 {
-#ifndef WIN32
+#ifndef WIN32  //linux环境下
     //设置信号处理
     signal(SIGCHLD, SIG_DFL);
     signal(SIGPIPE, SIG_IGN);
@@ -56,9 +57,9 @@ int main(int argc, char* argv[])
     signal(SIGTERM, prog_exit);
 
 
-    int ch;
-    bool bdaemon = false;
-    while ((ch = getopt(argc, argv, "d")) != -1)
+    int ch; //选项（应为char）
+    bool bdaemon = false; //默认非守护运行
+    while ((ch = getopt(argc, argv, "d")) != -1)  //遍历所有选项
     {
         switch (ch)
         {

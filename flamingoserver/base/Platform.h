@@ -1,4 +1,4 @@
-#pragma once
+#pragma once //文件只能包含一次
 
 #include <stdint.h>
 
